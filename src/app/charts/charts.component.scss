@@ -1,0 +1,49 @@
+.cards-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin: 50px;
+
+    .card {
+        display: flex;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+
+        .card-content {
+            padding: 0;
+        }
+
+        .card__title {
+            margin-bottom: 20px;
+        }
+
+        .form__container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form__actions {
+            align-items: center;
+            justify-content: right;
+            gap: 10px;
+        }
+    }
+}
+
+.charts-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+    #main {
+        width: 600px;
+        height: 300px;
+    }
+    
+    #chart {
+        width: 600px;
+    }
+}

@@ -1,0 +1,74 @@
+<!-- Inputs -->
+<div class="cards-container">
+    <mat-card class="card">
+        <mat-card-title class="card__title">Введите расход угля (тонн)</mat-card-title>
+        <mat-card-content class="card__content">
+            <form [formGroup]="coalForm" (ngSubmit)="calculateCoalEmissions()" class="form">
+
+                <div class="form__container">
+                    <mat-form-field class="form__field">
+                        <mat-label class="form__label">Уголь (тонн)</mat-label>
+                        <input class="form__input" matInput formControlName="coalConsumption" type="number" />
+                    </mat-form-field>
+    
+                    <mat-form-field class="form__field">
+                        <mat-label class="form__label">Дата ввода данных (уголь)</mat-label>
+                        <input class="form__input" matInput formControlName="date" [matDatepicker]="coalPicker" />
+                        <mat-datepicker-toggle matSuffix [for]="coalPicker" class="form__datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #coalPicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+  
+                <mat-card-actions class="form__actions">
+                    <button class="form__button" mat-raised-button (click)="resetCoalForm()">Откатить</button>
+                    <button class="form__button" mat-raised-button color="primary" [disabled]="coalForm.invalid" type="submit">Сохранить</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="card">
+        <mat-card-title class="card__title">Введите расход газа (тыс. м3)</mat-card-title>
+        <mat-card-content class="card__content">
+            <form [formGroup]="gasForm" (ngSubmit)="calculateGasEmissions()" class="form">
+
+                <div class="form__container">
+                    <mat-form-field class="form__field">
+                        <mat-label class="form__label">Газ (тыс. м3)</mat-label>
+                        <input class="form__input" matInput formControlName="gasConsumption" type="number" />
+                    </mat-form-field>
+    
+                    <mat-form-field class="form__field">
+                        <mat-label class="form__label">Дата ввода данных (газ)</mat-label>
+                        <input class="form__input" matInput formControlName="date" [matDatepicker]="gasPicker" />
+                        <mat-datepicker-toggle matSuffix [for]="gasPicker" class="form__datepicker"></mat-datepicker-toggle>
+                        <mat-datepicker #gasPicker></mat-datepicker>
+                    </mat-form-field>
+                </div>
+  
+                <mat-card-actions class="form__actions">
+                    <button class="form__button" mat-raised-button (click)="resetGasForm()">Откатить</button>
+                    <button class="form__button" mat-raised-button color="primary" [disabled]="gasForm.invalid" type="submit">Сохранить</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div class="charts-container">
+    <!-- APEXCHARTS -->
+    <div id="chart">
+        <apx-chart
+            [series]="chartOptions.series!"
+            [chart]="chartOptions.chart!"
+            [xaxis]="chartOptions.xaxis!"
+            [stroke]="chartOptions.stroke!"
+            [tooltip]="chartOptions.tooltip!"
+            [dataLabels]="chartOptions.dataLabels!"
+            [legend]="chartOptions.legend!"
+        ></apx-chart>
+    </div>
+    
+    <!-- Echarts -->
+    <div id="main"></div>
+</div>
